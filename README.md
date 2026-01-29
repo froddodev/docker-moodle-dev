@@ -2,7 +2,7 @@
   <a href="https://moodle.org/" target="blank"><img src="https://moodle.org/theme/moodleorg/pix/moodle_logo_TM.svg" width="300" alt="Moodle Logo" /></a>
 </p>
 
-#Entorno de Desarrollo Moodle (Docker)
+# Entorno de Desarrollo Moodle (Docker)
 
 <div align="center">
 
