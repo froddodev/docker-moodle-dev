@@ -1,61 +1,101 @@
+<p align="center">
+  <a href="https://moodle.org/" target="blank"><img src="https://moodle.org/pix/moodle-logo-raster.png" width="300" alt="Moodle Logo" /></a>
+</p>
 
+# Moodle con Docker Compose
 
-## Moodle con Docker Compose
-Este repositorio te permite ejecutar una instancia local del LMS Moodle utilizando Docker Compose, Este entorno incluye:
+<div align="center">
 
-- MariaDB como base de datos
-- Moodle version 4.3.3
-- phpMyAdmin para gestionar la base de datos
+[![Moodle](https://img.shields.io/badge/Moodle-4.3.3-orange?style=flat-square&logo=moodle)](https://moodle.org/)
+[![Docker](https://img.shields.io/badge/Docker-Container-blue?style=flat-square&logo=docker)](https://www.docker.com/)
+[![MariaDB](https://img.shields.io/badge/MariaDB-Database-003545?style=flat-square&logo=mariadb)](https://mariadb.org/)
+[![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-Admin-6c7cc4?style=flat-square&logo=phpmyadmin)](https://www.phpmyadmin.net/)
 
-## Instrucciones
+</div>
 
-**Clonar el repositorio:**
+Este repositorio permite desplegar un entorno completo de desarrollo para el LMS **Moodle** utilizando contenedores, facilitando la configuración de la base de datos y herramientas de gestión en cuestión de segundos.
+
+> [!NOTE]
+> **Notas de Stack:**
+>
+> - **Moodle v4.3.3:** Versión estable configurada para rendimiento local.
+> - **MariaDB:** Utilizada como motor de base de datos relacional robusto.
+> - **phpMyAdmin:** Interfaz gráfica incluida para gestionar la base de datos sin comandos SQL complejos.
+> - **Aislamiento:** Todo el entorno corre bajo una red aislada de Docker para evitar conflictos de puertos en tu host.
+
+---
+
+> [!IMPORTANT]
+> **Requisitos Previos**
+>
+> Es necesario tener instalados **Docker** y **Docker Compose** en tu sistema antes de proceder con el despliegue.
+>
+> [Documentación oficial de Docker](https://docs.docker.com/get-docker/)
+
+---
+
+## Configuración y Ejecución Local
+
+### 1. Clonar el Repositorio
+
 ```bash
 git clone https://github.com/froddo-dev/docker-moodle-dev.git
+cd docker-moodle-dev
 ```
 
-**Iniciar los contenedores:**
+### 2. Iniciar Servicios
+
 ```bash
 docker-compose up -d
 ```
 
-### Acceder a Moodle:
-- Url: `http://localhost:8080` 
-- Usuario: `admin` 
-- Contraseña: `passw0rd!` 
+---
 
-### Acceder a phpMyAdmin
-- Url: `http://localhost:8081` 
-- Usuario: `root` 
-- Contraseña: `moodle` 
+## Credenciales y Acceso
 
-### Comandos útiles
+| Servicio                | URL                                            | Usuario | Contraseña  |
+| :---------------------- | :--------------------------------------------- | :------ | :---------- |
+| **Moodle (Plataforma)** | [http://localhost:8080](http://localhost:8080) | `admin` | `passw0rd!` |
+| **phpMyAdmin (DB)**     | [http://localhost:8081](http://localhost:8081) | `root`  | `moodle`    |
 
-**Iniciar los contenedores:**
-```bash
-docker-compose up -d
-```
+---
 
-**Detener los contenedores:**
-```bash
-docker-compose down
-```
+## Comandos de Utilidad
 
-**Ver el estado de los contenedores:**
-```bash
-docker-compose ps
-```
+| Tarea                    | Comando                  |
+| :----------------------- | :----------------------- |
+| **Iniciar contenedores** | `docker-compose up -d`   |
+| **Detener contenedores** | `docker-compose down`    |
+| **Ver estado actual**    | `docker-compose ps`      |
+| **Monitorear logs**      | `docker-compose logs -f` |
+| **Reiniciar entorno**    | `docker-compose restart` |
 
-**Ver los logs de todos los contenedores:**
-```bash
-docker-compose logs -f
-```
+---
 
-## Documentación
-- Docker: [Documentación Docker Compose](https://docs.docker.com/compose/)
-- Moodle: [Documentación Moodle](https://docs.moodle.org/)
-- MariaDB: [Documentación MariaDB](https://mariadb.com/kb/en/documentation/)
+## Documentación de Referencia
 
-## Notas:
-- Las contraseñas, usuarios, puertos y otras opciones se pueden configurar modificando el archivo docker-compose.yml. 
-- Con este repositorio y los comandos mencionados, puedes crear y administrar de manera eficiente tu entorno de desarrollo local del LMS Moodle utilizando Docker Compose.
+- [Manual de Usuario Moodle](./docs/moodle-manual.md) (si aplica)
+- [Guía de Docker Compose](https://docs.docker.com/compose/)
+- [Configuración MariaDB](https://mariadb.com/kb/en/documentation/)
+
+---
+
+## Notas de Configuración
+
+Para personalizar el entorno, puedes editar el archivo `docker-compose.yml`.
+
+> [!TIP]
+> **Personalización:**
+> Puedes cambiar los puertos de salida (ej. `8080` por `9000`) o las credenciales de la base de datos modificando las variables de entorno dentro del archivo compose.
+
+---
+
+> [!NOTE]
+> **Nota del Desarrollador:**
+> Este entorno está diseñado para facilitar el desarrollo y pruebas de plugins o temas en Moodle.
+
+---
+
+## Licencia
+
+Este proyecto está bajo la [Licencia MIT](LICENSE).
